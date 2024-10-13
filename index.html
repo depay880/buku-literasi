@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Buku Literasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .book-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-section {
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        input[type="button"] {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        input[type="button"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Daftar Buku Literasi Kelas IX 3</h1>
+
+    <div class="input-section">
+        <label for="bookNumber">Masukkan Nomor Buku:</label>
+        <input type="number" id="bookNumber" min="1" max="10">
+        <input type="button" value="Cari Buku" onclick="findBook()">
+    </div>
+
+    <div class="book-info" id="bookInfo">
+        <!-- Informasi buku akan ditampilkan di sini -->
+    </div>
+
+    <script>
+        const books = [
+            { id: 1, title: "Bumi", synopsis: "Novel karya Tere Liye tentang petualangan dan persahabatan di dunia paralel." },
+            { id: 2, title: "Laskar Pelangi", synopsis: "Kisah inspiratif tentang sekelompok anak di Belitung yang berjuang untuk pendidikan." },
+            { id: 3, title: "Negeri 5 Menara", synopsis: "Perjalanan hidup enam santri di pesantren yang penuh dengan mimpi dan harapan." },
+            { id: 4, title: "Ayat-Ayat Cinta", synopsis: "Sebuah kisah cinta Islami yang menyoroti nilai-nilai moral dan spiritual." },
+            { id: 5, title: "Perahu Kertas", synopsis: "Kisah tentang cinta, mimpi, dan pencarian jati diri dua anak muda." },
+            { id: 6, title: "Dilan: Dia Adalah Dilanku Tahun 1990", synopsis: "Kisah cinta remaja yang terjadi pada tahun 1990 antara Milea dan Dilan." },
+            { id: 7, title: "Supernova: Ksatria, Putri, dan Bintang Jatuh", synopsis: "Novel Dee Lestari yang menggabungkan cerita fiksi ilmiah, filsafat, dan romansa." },
+            { id: 8, title: "Hujan", synopsis: "Sebuah novel fiksi ilmiah karya Tere Liye tentang dunia yang hancur oleh perubahan iklim." },
+            { id: 9, title: "Bidadari-Bidadari Surga", synopsis: "Novel karya Tere Liye yang menceritakan pengorbanan seorang kakak kepada adik-adiknya." },
+            { id: 10, title: "Rantau 1 Muara", synopsis: "Kisah perjalanan hidup seorang pemuda Minang yang merantau untuk mencapai cita-citanya." }
+        ];
+
+        function findBook() {
+            const bookNumber = document.getElementById('bookNumber').value;
+            const bookInfo = document.getElementById('bookInfo');
+            const book = books.find(b => b.id == bookNumber);
+
+            if (book) {
+                bookInfo.innerHTML = <h2>${book.title}</h2><p>${book.synopsis}</p>;
+            } else {
+                bookInfo.innerHTML = "<p>Buku tidak ditemukan. Silakan masukkan nomor yang valid (1-10).</p>";
+            }
+        }
+    </script>
+</body>
+</html>
